@@ -4,6 +4,7 @@ import static groovyx.net.http.HttpBuilder.configure
 import static groovyx.net.http.ContentTypes.JSON
 import groovyx.net.http.*
 
+@NonCPS
 def call(String deployitManifestLocation, String xldeployUrl, String usr, String pswd) {
 
   def versionName
@@ -29,7 +30,6 @@ def call(String deployitManifestLocation, String xldeployUrl, String usr, String
 		  request.uri.path = '/deployit/repository/query'
 		  request.uri.query = [type: 'udm.Application', namePattern: applicationName]
 	  }
-	  println "in/"
 	  versionId = result.ref+"/"+versionName
 	} else {
 		versionId = "Applications/"+applicationName+"/"+versionName
