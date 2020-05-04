@@ -4,7 +4,6 @@ import static groovyx.net.http.HttpBuilder.configure
 import static groovyx.net.http.ContentTypes.JSON
 import groovyx.net.http.*
 
-@NonCPS
 def call(String deployitManifestLocation, String xldeployUrl, String usr, String pswd) {
 
   def versionName
@@ -60,7 +59,6 @@ def call(String deployitManifestLocation, String xldeployUrl, String usr, String
 	state = ""
 	secondsWaited = 0
 	while (state != "EXECUTED" && secondsWaited < 180) {
-		@NonCPS
 		sleep(1000)
 		secondsWaited += 20
 	  result = httpConfig.get() {
