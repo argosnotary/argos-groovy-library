@@ -16,6 +16,7 @@ def call(String deployitManifestLocation, String xldeployUrl, String usr, String
   applicationName = xml.@application.toString()
   versionName = xml.@version.toString()
 
+  @NonCPS
   def httpConfig = configure {
 	  request.uri = xldeployUrl
 	  request.accept = JSON[0]
@@ -59,6 +60,7 @@ def call(String deployitManifestLocation, String xldeployUrl, String usr, String
 	state = ""
 	secondsWaited = 0
 	while (state != "EXECUTED" && secondsWaited < 180) {
+		@NonCPS
 		sleep(1000)
 		secondsWaited += 20
 	  result = httpConfig.get() {
