@@ -4,7 +4,7 @@ import static groovyx.net.http.HttpBuilder.configure
 import static groovyx.net.http.ContentTypes.JSON
 import groovyx.net.http.*
 
-def triggerXLDeployCollectTask(String deployitManifestLocation, String xldeployUrl, String usr, String pswd) {
+def call(String deployitManifestLocation, String xldeployUrl, String usr, String pswd) {
 
   def versionName
   def applicationName
